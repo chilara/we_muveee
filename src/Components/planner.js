@@ -11,7 +11,7 @@ import { plan } from "./data";
 
 const Planner = () => {
   return (
-    <Box minHeight={"100vh"} width={"80%"}>
+    <Box minHeight={"100vh"} width={"80%"} ml={"20%"}>
       <Box
         padding={"16px 24px 16px 24px"}
         height={"60px"}

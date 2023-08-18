@@ -16,7 +16,12 @@ import { list } from "./data";
 
 const ListBar = () => {
   return (
-    <Box minHeight={"100vh"} borderRight={"1px solid #DAE0E6"} width={"20%"}>
+    <Box
+      minHeight={"100vh"}
+      borderRight={"1px solid #DAE0E6"}
+      width={"20%"}
+      position={"fixed"}
+    >
       <Box
         padding={"16px 24px 16px 24px"}
         height={"60px"}
