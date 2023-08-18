@@ -43,149 +43,132 @@ const Planner = () => {
           <IoIosContact />
         </Flex>
       </Box>
-      <Text
-        color={"#272D37"}
-        fontSize={"24px"}
-        fontWeight={700}
-        ml={"100px"}
-        mt={"12px"}
-      >
-        Planner
-      </Text>
-      <Box
-        padding={"12px 6px 12px 6px"}
-        width={"400px"}
-        height={"60px"}
-        borderRadius={"50px"}
-        bgColor={"#EBEFF3"}
-        display={"flex"}
-        gap={"4rem"}
-        alignItems={"center"}
-        mt={"3.5rem"}
-        ml={"35%"}
-      >
+      <Box px={"7rem"}>
+        <Text color={"#272D37"} fontSize={"24px"} fontWeight={700} mt={"10px"}>
+          Planner
+        </Text>
         <Box
-          borderRadius={"48px"}
-          bgColor={"#FAFBFC"}
-          width={"194px"}
-          height={"48px"}
-          padding={"8px"}
+          padding={"12px 6px 12px 6px"}
+          width={"400px"}
+          height={"60px"}
+          borderRadius={"50px"}
+          bgColor={"#EBEFF3"}
           display={"flex"}
-          justifyContent={"center"}
+          gap={"4rem"}
           alignItems={"center"}
-          gap={".5rem"}
+          mt={"3.5rem"}
+          ml={"35%"}
         >
-          <TbLayoutList />
-          <Text
-            textAlign={"center"}
-            fontSize={"16px"}
-            color={"#5F6D7E"}
-            fontWeight={600}
+          <Box
+            borderRadius={"48px"}
+            bgColor={"#FAFBFC"}
+            width={"194px"}
+            height={"48px"}
+            padding={"8px"}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            gap={".5rem"}
           >
-            List
-          </Text>
+            <TbLayoutList />
+            <Text
+              textAlign={"center"}
+              fontSize={"16px"}
+              color={"#5F6D7E"}
+              fontWeight={600}
+            >
+              List
+            </Text>
+          </Box>
+          <Box
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+            gap={".5rem"}
+          >
+            <RxDashboard />
+            <Text
+              textAlign={"center"}
+              fontSize={"16px"}
+              color={"#5F6D7E"}
+              fontWeight={600}
+            >
+              Board
+            </Text>
+          </Box>
         </Box>
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          gap={".5rem"}
-        >
-          <RxDashboard />
-          <Text
-            textAlign={"center"}
-            fontSize={"16px"}
-            color={"#5F6D7E"}
-            fontWeight={600}
-          >
-            Board
-          </Text>
-        </Box>
-      </Box>
-      <Text
-        color={"#272D37"}
-        fontSize={"24px"}
-        fontWeight={600}
-        ml={"100px"}
-        mt={"1rem"}
-      >
-        Slots
-      </Text>
-      <Box
-        ml={"100px"}
-        mt={"1rem"}
-        gap={"2rem"}
-        display={"flex"}
-        flexDir={"column"}
-      >
-        {plan.map((item, index) => (
-          <Flex
-            key={index}
-            width={"960px"}
-            height={"fit-content"}
-            borderLeft={item.borderB}
-            flexDir={"column"}
-            alignItems={"flex-start"}
-            borderLeftRadius={"8px"}
-            borderBottom={"1px solid #DAE0E6"}
-            gap={"1rem"}
-            transition={"all 0.2s ease-in-out"}
-            _hover={{
-              transform: "scale(1.02)",
-            }}
-          >
+        <Text color={"#272D37"} fontSize={"24px"} fontWeight={600} mt={"1rem"}>
+          Slots
+        </Text>
+        <Box mt={"1rem"} gap={"2rem"} display={"flex"} flexDir={"column"}>
+          {plan.map((item, index) => (
             <Flex
-              gap={".6rem"}
-              justifyContent={"center"}
+              key={index}
+              height={"fit-content"}
+              borderLeft={item.borderB}
+              flexDir={"column"}
               alignItems={"flex-start"}
-              pl={"1rem"}
+              borderLeftRadius={"8px"}
+              borderBottom={"1px solid #DAE0E6"}
+              gap={"1rem"}
+              transition={"all 0.2s ease-in-out"}
+              _hover={{
+                transform: "scale(1.02)",
+              }}
             >
-              <Box
-                borderRadius={"4px"}
-                width={"20px"}
-                height={"20px"}
-                bgColor={item.color}
-                mt={"1rem"}
+              <Flex
+                gap={".6rem"}
+                justifyContent={"center"}
+                alignItems={"flex-start"}
+                pl={"1rem"}
               >
-                <Text fontSize={"12px"} color={"#fff"} textAlign={"center"}>
-                  {item.id}
+                <Box
+                  borderRadius={"4px"}
+                  width={"20px"}
+                  height={"20px"}
+                  bgColor={item.color}
+                  mt={"1rem"}
+                >
+                  <Text fontSize={"12px"} color={"#fff"} textAlign={"center"}>
+                    {item.id}
+                  </Text>
+                </Box>
+                <Text
+                  fontSize={"14px"}
+                  fontWeight={600}
+                  color={"#5F6D7E"}
+                  mt={"1rem"}
+                >
+                  {item.name}
                 </Text>
-              </Box>
-              <Text
-                fontSize={"14px"}
-                fontWeight={600}
-                color={"#5F6D7E"}
-                mt={"1rem"}
+              </Flex>
+              <Flex justifyContent={"space-between"} gap={"1rem"} pl={"2.9rem"}>
+                <Text color={"#5F6D7E"} fontSize={"13px"}>
+                  {item.pickUP}
+                </Text>
+                <Text color={"#5F6D7E"} fontSize={"13px"}>
+                  -
+                </Text>
+                <Text color={"#5F6D7E"} fontSize={"13px"}>
+                  {item.dropOFF}
+                </Text>
+              </Flex>
+              <Flex
+                padding={"4px"}
+                border={"1px solid #DAE0E6"}
+                borderRadius={"4px"}
+                ml={"2.9rem"}
+                mb={".7rem"}
+                gap={".5rem"}
               >
-                {item.name}
-              </Text>
+                <LiaCalendarAltSolid />
+                <Text fontSize={"12px"} color={"#5F6D7E"}>
+                  Aug 10
+                </Text>
+              </Flex>
             </Flex>
-            <Flex justifyContent={"space-between"} gap={"1rem"} pl={"2.9rem"}>
-              <Text color={"#5F6D7E"} fontSize={"13px"}>
-                {item.pickUP}
-              </Text>
-              <Text color={"#5F6D7E"} fontSize={"13px"}>
-                -
-              </Text>
-              <Text color={"#5F6D7E"} fontSize={"13px"}>
-                {item.dropOFF}
-              </Text>
-            </Flex>
-            <Flex
-              padding={"4px"}
-              border={"1px solid #DAE0E6"}
-              borderRadius={"4px"}
-              ml={"2.9rem"}
-              mb={".7rem"}
-              gap={".5rem"}
-            >
-              <LiaCalendarAltSolid />
-              <Text fontSize={"12px"} color={"#5F6D7E"}>
-                Aug 10
-              </Text>
-            </Flex>
-          </Flex>
-        ))}
+          ))}
+        </Box>
       </Box>
     </Box>
   );
