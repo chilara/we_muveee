@@ -7,11 +7,10 @@ import { HiOutlineMoon } from "react-icons/hi";
 import { TbLayoutList } from "react-icons/tb";
 import { RxDashboard } from "react-icons/rx";
 import { LiaCalendarAltSolid } from "react-icons/lia";
-import { plan } from "./data";
 
-const Planner = () => {
+const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
   return (
-    <Box minHeight={"100vh"} width={"80%"} ml={"20%"}>
+    <Box minHeight={"100vh"} width={"80%"}>
       <Box
         padding={"16px 24px 16px 24px"}
         height={"60px"}
@@ -100,10 +99,13 @@ const Planner = () => {
         <Text color={"#272D37"} fontSize={"24px"} fontWeight={600} mt={"1rem"}>
           Slots
         </Text>
+        <Text fontWeight={"bold"} fontSize={"12px"} color={"#272D37"}>
+          Only the first four days are the available slots
+        </Text>
         <Box mt={"1rem"} gap={"2rem"} display={"flex"} flexDir={"column"}>
-          {plan.map((item, index) => (
+          {customers.map((item, customerIndex) => (
             <Flex
-              key={index}
+              key={customerIndex}
               height={"fit-content"}
               borderLeft={item.borderB}
               flexDir={"column"}
@@ -153,18 +155,42 @@ const Planner = () => {
                   {item.dropOFF}
                 </Text>
               </Flex>
-              <Flex
-                padding={"4px"}
-                border={"1px solid #DAE0E6"}
-                borderRadius={"4px"}
-                ml={"2.9rem"}
-                mb={".7rem"}
-                gap={".5rem"}
-              >
-                <LiaCalendarAltSolid />
-                <Text fontSize={"12px"} color={"#5F6D7E"}>
-                  Aug 10
-                </Text>
+              <Flex>
+                {dates.map((date, dateIndex) => (
+                  <Flex
+                    onClick={onSelectSlot(`${dateIndex}`, customerIndex)}
+                    key={dateIndex}
+                    backgroundColor={
+                      selectedSlot[customerIndex] === `${dateIndex}`
+                        ? "blue.500"
+                        : ""
+                    }
+                    color={
+                      selectedSlot[customerIndex] === `${dateIndex}`
+                        ? "#fff"
+                        : ""
+                    }
+                    padding={"4px"}
+                    border={"1px solid #DAE0E6"}
+                    borderRadius={"4px"}
+                    ml={"2.9rem"}
+                    mb={".7rem"}
+                    gap={".2rem"}
+                    cursor="pointer"
+                  >
+                    <LiaCalendarAltSolid />
+                    <Text
+                      fontSize={"12px"}
+                      color={
+                        selectedSlot[customerIndex] === `${dateIndex}`
+                          ? "#fff"
+                          : "#5F6D7E"
+                      }
+                    >
+                      {date}
+                    </Text>
+                  </Flex>
+                ))}
               </Flex>
             </Flex>
           ))}

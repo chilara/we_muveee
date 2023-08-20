@@ -12,16 +12,11 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { IoIosAdd } from "react-icons/io";
-import { list } from "./data";
+import { customers } from "./data";
 
-const ListBar = () => {
+const ListBar = ({ dates, slots, onSelectSlot }) => {
   return (
-    <Box
-      minHeight={"100vh"}
-      borderRight={"1px solid #DAE0E6"}
-      width={"20%"}
-      position={"fixed"}
-    >
+    <Box minHeight={"100vh"} borderRight={"1px solid #DAE0E6"} width={"20%"}>
       <Box
         padding={"16px 24px 16px 24px"}
         height={"60px"}
@@ -56,8 +51,8 @@ const ListBar = () => {
           </Text>
         </Box>
         <Flex flexDir={"column"}>
-          {list.map((item, index) => (
-            <Accordion allowToggle key={index}>
+          {customers.map((item, customerIndex) => (
+            <Accordion allowToggle key={customerIndex}>
               <AccordionItem margin={"0 5%"} width={"90%"}>
                 <h2>
                   <AccordionButton
@@ -122,14 +117,20 @@ const ListBar = () => {
                     <Text color={"#5F6D7E"}>{item.dropOFF}</Text>
                     <Select
                       placeholder="Pick a Date"
+                      value={slots[customerIndex]}
                       size={"xs"}
                       width={"50%"}
                       color={"#5F6D7E"}
+                      onChange={(e) => {
+                        const dateIndex_ = e.target.value;
+                        onSelectSlot(dateIndex_, customerIndex)();
+                      }}
                     >
-                      <option value="option1">10th</option>
-                      <option value="option2">11th</option>
-                      <option value="option3">12th</option>
-                      <option value="option3">13th</option>
+                      {dates.map((item, index) => (
+                        <option key={index} value={index}>
+                          {item}
+                        </option>
+                      ))}
                     </Select>
                   </Flex>
                 </AccordionPanel>
