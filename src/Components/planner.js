@@ -10,15 +10,28 @@ import { LiaCalendarAltSolid } from "react-icons/lia";
 
 const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
   return (
-    <Box minHeight={"100vh"} width={"80%"}>
+    <Box
+      minHeight={"100vh"}
+      // width={{ lg: "80%", base: "100%" }}
+      display={"flex"}
+      flexDir={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
       <Box
         padding={"16px 24px 16px 24px"}
         height={"60px"}
+        width={"100%"}
         borderBottom={"1px solid #DCDCDC"}
         display={"flex"}
         justifyContent={"space-between"}
+        gap={"5rem"}
       >
-        <Text color={"#272D37"} fontWeight={400} fontSize={"20px"}>
+        <Text
+          color={"#272D37"}
+          fontWeight={400}
+          fontSize={{ lg: "20px", base: "18px" }}
+        >
           Good evening, Elon
         </Text>
         <Box
@@ -27,7 +40,7 @@ const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
           width={"350px"}
           borderRadius={"50px"}
           border={"1px solid #DAE0E6"}
-          display={"flex"}
+          display={{ lg: "flex", base: "none" }}
           gap={".5rem"}
           alignItems={"center"}
         >
@@ -43,20 +56,25 @@ const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
         </Flex>
       </Box>
       <Box px={"7rem"}>
-        <Text color={"#272D37"} fontSize={"24px"} fontWeight={700} mt={"10px"}>
+        <Text
+          color={"#272D37"}
+          fontSize={{ lg: "24px", base: "20px" }}
+          fontWeight={700}
+          mt={"10px"}
+        >
           Planner
         </Text>
         <Box
-          padding={"12px 6px 12px 6px"}
-          width={"400px"}
+          padding={{ lg: "12px 6px 12px 6px", base: "10px 4px 10px 4px" }}
+          width={{ lg: "40%", base: "80%" }}
           height={"60px"}
           borderRadius={"50px"}
           bgColor={"#EBEFF3"}
           display={"flex"}
-          gap={"4rem"}
+          gap={{ lg: "4rem", base: "2rem" }}
           alignItems={"center"}
-          mt={"3.5rem"}
-          ml={"35%"}
+          mt={{ lg: "3.5rem", base: "2.5rem" }}
+          ml={{ lg: "35%", base: "10%" }}
         >
           <Box
             borderRadius={"48px"}
@@ -84,6 +102,7 @@ const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
             justifyContent={"center"}
             alignItems={"center"}
             gap={".5rem"}
+            mr={{ lg: "0", base: "2rem" }}
           >
             <RxDashboard />
             <Text
@@ -99,10 +118,15 @@ const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
         <Text color={"#272D37"} fontSize={"24px"} fontWeight={600} mt={"1rem"}>
           Slots
         </Text>
-        <Text fontWeight={"bold"} fontSize={"12px"} color={"#272D37"}>
+        <Text fontWeight={"semibold"} fontSize={"14px"} color={"#272D37"}>
           Only the first four days are the available slots
         </Text>
-        <Box mt={"1rem"} gap={"2rem"} display={"flex"} flexDir={"column"}>
+        <Box
+          mt={{ lg: "1rem", base: "2rem" }}
+          gap={"2rem"}
+          display={"flex"}
+          flexDir={"column"}
+        >
           {customers.map((item, customerIndex) => (
             <Flex
               key={customerIndex}
@@ -136,7 +160,7 @@ const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
                   </Text>
                 </Box>
                 <Text
-                  fontSize={"14px"}
+                  fontSize={{ lg: "14px", base: "16px" }}
                   fontWeight={600}
                   color={"#5F6D7E"}
                   mt={"1rem"}
@@ -145,17 +169,17 @@ const Planner = ({ dates, customers, slots: selectedSlot, onSelectSlot }) => {
                 </Text>
               </Flex>
               <Flex justifyContent={"space-between"} gap={"1rem"} pl={"2.9rem"}>
-                <Text color={"#5F6D7E"} fontSize={"13px"}>
+                <Text color={"#5F6D7E"} fontSize={{ lg: "13px", base: "15px" }}>
                   {item.pickUP}
                 </Text>
-                <Text color={"#5F6D7E"} fontSize={"13px"}>
+                <Text color={"#5F6D7E"} fontSize={{ lg: "13px", base: "15px" }}>
                   -
                 </Text>
                 <Text color={"#5F6D7E"} fontSize={"13px"}>
                   {item.dropOFF}
                 </Text>
               </Flex>
-              <Flex>
+              <Flex flexDir={{ lg: "row", base: "column" }}>
                 {dates.map((date, dateIndex) => (
                   <Flex
                     onClick={onSelectSlot(`${dateIndex}`, customerIndex)}
